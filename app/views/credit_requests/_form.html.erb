@@ -1,0 +1,27 @@
+<%= form_with(model: credit_request, local: true) do |form| %>
+  <% if credit_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(credit_request.errors.count, "error") %> prohibited this credit_request from being saved:</h2>
+
+      <ul>
+      <% credit_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :call_id %>
+    <%= form.text_field :call_id, id: :credit_request_call_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data %>
+    <%= form.text_field :data, id: :credit_request_data %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
