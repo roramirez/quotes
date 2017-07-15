@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   post '/simulation', to: 'simulation#index'
   get '/new_subscriber', to: 'subscriber#new'
+
+  root 'credit_requests#index'
 end
