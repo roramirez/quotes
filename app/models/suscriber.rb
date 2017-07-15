@@ -1,2 +1,0 @@
-class Suscriber < ApplicationRecord
-end

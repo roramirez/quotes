@@ -1,6 +1,6 @@
-class CreateSuscribers < ActiveRecord::Migration[5.1]
+class CreateSubscriber < ActiveRecord::Migration[5.1]
   def change
-    create_table :suscribers do |t|
+    create_table :subscriber do |t|
       t.string :username
       t.string :domain
       t.string :password
