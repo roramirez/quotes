@@ -29,7 +29,7 @@ class SubscriberController < ApplicationController
     response = {
       "password" => subscriber_pass,
       "uri" => subscriber_id + '@' + domain,
-      "ws"  => "wss://67.205.150.220:10443"
+      "ws"  => "wss://ws.callnow.tech:10443"
     }
 
     render :json => response.to_json
