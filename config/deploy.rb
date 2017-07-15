@@ -2,7 +2,7 @@
 lock "3.8.2"
 
 set :application, "quotes"
-set :repo_url, "git@bitbucket.org:afromankenobi/quotes.git"
+set :repo_url, "https://github.com/afromankenobi/quotes.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
