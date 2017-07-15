@@ -26,9 +26,13 @@ class SubscriberController < ApplicationController
 
     @subscriber.save!
 
-    respond_to do |format|
-        format.html { render :new }
-    end
+    response = {
+      "password" => subscriber_pass,
+      "uri" => subscriber_id + '@' + domain,
+      "ws"  => "wss://67.205.150.220:10443"
+    }
+
+    render :json => response.to_json
 
   end
 
