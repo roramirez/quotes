@@ -24,6 +24,7 @@ set :deploy_to, "/var/www/quotes"
 # append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/sockets'
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for default_env is {}
