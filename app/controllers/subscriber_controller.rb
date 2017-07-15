@@ -8,7 +8,7 @@ class SubscriberController < ApplicationController
     domain = ENV["DOMAIN"]
 
     subscriber_id = SecureRandom.uuid
-    subscriber_pass = SecureRandom.uuid[0..25]
+    subscriber_pass = SecureRandom.uuid[0..24] #OSOM BUG :(
 
     md5 = Digest::MD5.new
     md5.update (subscriber_id + ':' +  domain + ':' + subscriber_pass)
