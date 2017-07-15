@@ -35,3 +35,14 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/sockets'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+after 'deploy:publishing', 'deploy:restart'
+
+namespace :deploy do
+  desc 'Restart unicorn <3'
+  task :restart do
+    on roles(:app) do
+      sudo :service, :unicorn, :upgrade
+    end
+  end
+end
