@@ -11,8 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome/css/font-awesome
+ *= require bootstrap/dist/css/bootstrap.min
+ *= require mdi/css/materialdesignicons
+ *= require ionicons/dist/css/ionicons
+ *= require ti-icons/css/themify-icons
+ *= require weather-icons/css/weather-icons
  *= require tether/dist/css/tether
- *= require bootstrap/dist/css/bootstrap
  *= require minton/switchery.min
  *= require minton/style
  *= require_tree .
