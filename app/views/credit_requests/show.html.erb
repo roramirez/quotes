@@ -24,7 +24,7 @@
                 <tbody>
                 <tr>
                     <th scope="row">RUT</th>
-                    <td><%= [@credit_request.data['rutCliente'], @credit_request.data['dvCliente']]%></td>
+                    <td><%= [@credit_request.data['rutCliente'], @credit_request.data['dvCliente']].join('-')%></td>
                 </tr>
                 <tr>
                     <th scope="row">Edad</th>
@@ -66,7 +66,7 @@
                 <tbody>
                 <tr>
                     <th scope="row">Sueldo promedio líquido</th>
-                    <td>$<%= @credit_request.data['renta'] %>/td>
+                    <td>$<%= @credit_request.data['renta'] %></td>
                 </tr>
                 <tr>
                     <th scope="row">Valor propiedades</th>
