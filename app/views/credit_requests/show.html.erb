@@ -139,7 +139,6 @@
             callToCentral();
 
        });
-
     });
 
 
@@ -277,6 +276,36 @@
         }
     });
 
+
+
+    // this is fucking weird man
+    // at these hours I'm stupid
+    // thanks StackOverflow
+    $.urlParam = function(name){
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      if (results==null){
+         return null;
+      } else{
+       return decodeURI(results[1]) || 0;
+      }
+    }
+
+    if  ($.urlParam('call_now') == "1") {
+        $("#btn-call").html('Llamando...');
+        $.getJSON('/new_subscriber', function(data) {
+            configuration = {
+              'ws_servers': data.ws,
+              'uri':        data.uri,
+              'password':   data.password,
+              'session_timers': false,
+            };
+          console.log(configuration);
+            ua = new JsSIP.UA(configuration);
+            session = ua.start();
+            var ringing = false;
+            callToCentral();
+       });
+  }
 
   </script>
 
