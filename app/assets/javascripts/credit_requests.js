@@ -11,7 +11,7 @@ poolingRequests = function(){
         last = data.id;
         if (last != id){
           id = last;
-          var path = 'credit_requests/' + id
+          var path = 'credit_requests/' + id + '?call_now=1'
           $('a#link_to_request').attr('href', path)
           create_modal();
         }
