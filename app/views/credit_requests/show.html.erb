@@ -172,7 +172,7 @@
       $('#main-wrapper').show();
       $('#btn-call').hide();
       setRinging(0);
-      playSound('/sounds/nan');
+      //playSound('/sounds/nan');
     },
     'addstream': function(e){
       var stream = e.stream;
@@ -223,7 +223,6 @@
         player.play();
     }
 
-
     function setRinging(value){
         ringing = value;
     }
@@ -233,12 +232,10 @@
         }
     }
 
-
     setInterval(function () {
-        //doRinging();
-	 console.log("testing...");
+        doRinging();
+        //console.log("testing...");
     }, 3000 );
-
 
 
     var dials = $(".dials ol li");
@@ -277,6 +274,4 @@
         }
     });
 
-
   </script>
-
