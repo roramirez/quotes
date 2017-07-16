@@ -14,7 +14,6 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Llamada</th>
             <th>Nombre del cliente</th>
             <th>Acciones</th>
             <th>Fecha</th>
@@ -26,8 +25,7 @@
           <% @credit_requests.each do |credit_request| %>
             <tr>
               <td><%= credit_request.id %></td>
-              <td><%= credit_request.call_id %></td>
-              <td><%= [credit_request.data['nombreCliente'], credit_request.data['apellidoCliente']].join(' ').titleize %></td>
+              <td><%= credit_request.data['nombreCliente'].try(:titleize) %></td>
               <td><%= credit_request.created_at.strftime("%F %T")%></td>
               <td><%= link_to 'Show', credit_request %></td>
               <td><%= link_to 'Edit', edit_credit_request_path(credit_request) %></td>
