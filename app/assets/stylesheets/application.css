@@ -17,6 +17,7 @@
  *= require ti-icons/css/themify-icons
  *= require weather-icons/css/weather-icons
  *= require tether/dist/css/tether
+ *= require custombox/dist/custombox.min
  *= require minton/switchery.min
  *= require minton/style
  *= require_tree .
