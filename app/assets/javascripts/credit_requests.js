@@ -20,7 +20,7 @@ poolingRequests = function(){
     .fail(function() {
       console.log('pooling fallo');
     });
-  }, 10000);
+  }, 3000);
 }
 
 create_modal = function(){
