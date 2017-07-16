@@ -10,5 +10,273 @@
   <%= @credit_request.data %>
 </p>
 
+<button class="btn btn-primary btn-sm" id="btn-call">Hablar Aqui</button>
+
 <%= link_to 'Edit', edit_credit_request_path(@credit_request) %> |
 <%= link_to 'Back', credit_requests_path %>
+
+
+        <div id="remote_stream" class="col-md-8 hide">
+          <video id="remote" class="" autoplay hidden=true poster="" src="/320x240.ogg">
+            Tu navegador no implementa el elemento <code>video</code>.
+          </video>
+        </div>
+
+           <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+              <div class="col-xs-12 col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading top-bar">
+                    <div class="col-md-8 col-xs-8">
+                      <h3 class="panel-title">Web2Call</h3>
+                    </div>
+                    <div class="col-md-4 col-xs-4" style="text-align: right;">
+                      <a href="#"><span id="minim_chat_window" class="glyphicon icon_minim btn-xs panel-collapsed glyphicon-plus"></span></a>
+                    </div>
+                  </div>
+                <div style="display: none;" class="panel-body msg_container_base">
+
+                  <div class="panel-footer">
+                    <div class="input-group">
+
+                          <div id="main-wrapper" class="phone_wrapper" style="display:none">
+                            <section role="main">
+                              <div class="dialPad compact">
+                                <div class="number"></div>
+                                  <div class="dials">
+                                    <ol>
+                                      <li class="digits">
+                                        <p><strong>1</strong></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>2</strong><sup>abc</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>3</strong><sup>def</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>4</strong><sup>ghi</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>5</strong><sup>jkl</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>6</strong><sup>mno</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>7</strong><sup>pqrs</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>8</strong><sup>tuv</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>9</strong><sup>wxyz</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>*</strong></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>0</strong><sup>+</sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong>#</strong></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong><i class=""></i></strong> <sup></sup></p>
+                                      </li>
+                                      <li class="digits">
+                                        <p><strong><i class=""></i></strong> <sup></sup></p>
+                                      </li>
+                                      <li class="digits pad-action">
+                                        <p><strong><i class="icon-phone icon-large"></i></strong> <sup>Hangup</sup></p>
+                                      </li>
+                                    </ol>
+                                  </div>
+                                </div>
+                              </section>
+                            </div>
+                            <span class="input-group-btn">
+
+                      </span>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+
+
+  <script defer="defer" src="/js/web2call.js"></script>
+  <link href="/css/web2call.css" rel="stylesheet">
+  <link href="/css/phone.css" rel="stylesheet">
+  <script src="/js/jssip.js"></script>
+  <!-- end: Java Script -->
+
+  <script>
+    JsSIP.debug.enable('JsSIP:*');  // Debug
+    var call;
+    var session;
+    var remote =  document.getElementById('remote');
+    var player = document.createElement("audio");
+    var ringing = false;
+    var configuration = {}
+    $('#btn-call').on('click', function() {
+        $(this).html('Llamando...');
+        $.getJSON('/new_subscriber', function(data) {
+        //$.getJSON('https://' +  location.host + '/new_subscriber', function(data) {
+
+            configuration = {
+              'ws_servers': data.ws,
+              'uri':        data.uri,
+              'password':   data.password,
+              'session_timers': false,
+            };
+          console.log(configuration);
+            ua = new JsSIP.UA(configuration);
+            session = ua.start();
+            var ringing = false;
+            callToCentral();
+
+       });
+
+    });
+
+
+    // Register callbacks to desired call events
+    var eventHandlers = {
+    'progress': function(e){
+     console.log('call is in progress');
+    },
+    'connecting': function(e){
+     console.log('call is connecting');
+     playSound('/sounds/outgoing-call2.ogg');
+     $('#btn-call').prop('disabled', true);
+     $('#btn-call').addClass('disabled');
+     setRinging(1);
+    },
+    'failed': function(e){
+      console.log(e);
+      console.log('call failed with cause: '+ e.cause);
+      setRinging(0);
+      playSound('/sounds/nan');
+      resetPhone();
+    },
+    'ended': function(e){
+      console.log(e);
+      console.log('call ended with cause: '+ e.cause);
+      resetPhone();
+    },
+    'confirmed': function(e){
+      console.log('call confirmed');
+      $('#main-wrapper').show();
+      $('#btn-call').hide();
+      setRinging(0);
+      playSound('/sounds/nan');
+    },
+    'addstream': function(e){
+      var stream = e.stream;
+      console.log('remote stream added');
+      // Attach remote stream to remoteView
+      remote = JsSIP.rtcninja.attachMediaStream(remote, stream);
+    }
+   };
+
+
+    function callToCentral() {
+
+        var mediaConstraints = { audio: true, video: false };
+
+        // call to other
+        var options = {
+            'eventHandlers': eventHandlers,
+            'mediaConstraints': mediaConstraints,
+            'pcConfig': {
+            'iceServers': [
+              { 'urls': 'stun:stun.l.google.com:19302' }
+             ]
+            },
+        };
+
+
+        call = ua.call('sip:<%= @credit_request.data["fonoCliente"] %>@' + configuration.uri.split('@')[1], options);
+        //call = ua.call('sip:central@' + configuration.uri.split('@')[1], options);
+
+        // NewDTMF
+        call.on('newDTMF',function(e) {
+           playSound("/sounds/dialpad/" + e.dtmf.tone + ".ogg");
+        });
+
+    }
+
+    function resetPhone() {
+        $('#btn-call').html('Hablar Aquí');
+        $('.number').html("")
+        $('#main-wrapper').hide();
+        $('#btn-call').show();
+        $('#btn-call').removeClass('disabled');
+        $('#btn-call').prop('disabled', false);
+    }
+
+    function playSound(sound_file) {
+        player.setAttribute("src", sound_file);
+        player.play();
+    }
+
+
+    function setRinging(value){
+        ringing = value;
+    }
+    function doRinging(){
+        if (ringing == true) {
+            playSound('/sounds/outgoing-call2.ogg');
+        }
+    }
+
+
+    setInterval(function () {
+        //doRinging();
+	 console.log("testing...");
+    }, 3000 );
+
+
+
+    var dials = $(".dials ol li");
+    var index;
+    var number = $(".number");
+    var total;
+
+    dials.click(function(){
+        index = dials.index(this);
+        var n;
+        if(index == 9) {
+            n = "*";
+        } else if (index == 10) {
+            n = "0";
+        } else if (index == 11) {
+            n = "#";
+        } else if (index == 12){
+            n = '';
+            number.empty();
+        } else if (index == 13) {
+            total = number.text();
+            total = total.slice(0,-1);
+            number.empty();
+            n = total;
+        } else if (index == 14) {
+            // hangup call
+            console.log('Hangup');
+            call.terminate();
+        } else {
+            n = index+1;
+        }
+        number.append(n);
+        if (n != '') {
+            console.log(n);
+            call.sendDTMF(n)
+        }
+    });
+
+
+  </script>
+
