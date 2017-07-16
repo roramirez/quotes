@@ -140,11 +140,35 @@
     </div>
 
     <div class="col-lg-6">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">OFERTAS</h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Credito consumo pre-aprobado de $10.000.000</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">Descuento en tasa</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">3 meses de gracia</th>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
       <button class="btn btn-primary btn-sm" id="btn-call">Hablar Aqui</button>
 
       <%= link_to 'Edit', edit_credit_request_path(@credit_request) %> |
       <%= link_to 'Back', credit_requests_path %>
-
 
       <div id="remote_stream" class="col-md-8 hide">
         <video id="remote" class="" autoplay hidden=true poster="" src="/320x240.ogg">
@@ -152,7 +176,7 @@
         </video>
       </div>
 
-         <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+         <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;display:none;">
             <div class="col-xs-12 col-md-12">
               <div class="panel panel-default">
                 <div class="panel-heading top-bar">
