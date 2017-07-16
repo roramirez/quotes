@@ -1,6 +1,13 @@
 # config valid only for current version of Capistrano
 lock "3.8.2"
 
+require 'capistrano-db-tasks'
+
+set :rails_env, "production"
+set :db_local_clean, true
+set :db_remote_clean, true
+set :disallow_pushing, true
+
 set :application, "quotes"
 set :repo_url, "https://github.com/afromankenobi/quotes.git"
 
