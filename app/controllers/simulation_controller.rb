@@ -56,6 +56,13 @@ class SimulationController < ApplicationController
       "codSeguro" =>  1
     }
 
+    params.each do |p|
+      if parameters.key?(p)
+        val = params[p]
+        parameters[p] = val
+      end
+    end
+
     request.body = JSON[parameters]
     response = http.request(request)
 
