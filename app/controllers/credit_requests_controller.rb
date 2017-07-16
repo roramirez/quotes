@@ -21,6 +21,14 @@ class CreditRequestsController < ApplicationController
   def edit
   end
 
+  def last
+    @credit_request = CreditRequest.last
+    response = {
+      "id" => @credit_request.id
+    }
+    render :json => response.to_json
+  end
+
   # POST /credit_requests
   # POST /credit_requests.json
   def create
