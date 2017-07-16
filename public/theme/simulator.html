@@ -129,7 +129,7 @@
                           <input type="text" class="form-control"id="valorpropiedad" name="valorPropiedadUf" placeholder="0">
                     </div><!-- /input-group -->
                     <!--</div>-->
-                    
+
                     <p><strong>¿Cuál es el monto del pie que entregarás?</strong></p>
                     <!--<div class="form-group">-->
                      <div class="input-group">
@@ -143,7 +143,7 @@
                           <input type="text" class="form-control"id="pie" name="valorPropiedadUf" placeholder="0">
                     </div><!-- /input-group -->
                     <!--</div>-->
-                    
+
                     <p><strong>¿Cuál es el monto del crédito que deseas solicitar?</strong></p>
                     <!--<div class="form-group">-->
                      <div class="input-group">
@@ -157,11 +157,11 @@
                           <input type="text" class="form-control"id="montocredito" name="montoCreditoUf" placeholder="0">
                     </div><!-- /input-group -->
                     <!--</div>-->
-                    
+
                      <p><strong>¿En cuántos años deseas pagar el crédito?</strong></p>
                     <!--<div class="form-group">-->
                      <div class="input-group">
-                        
+
                             <select class="form-control" name="anosTasaFija">
                                 <option>10</option>
                                 <option>12</option>
@@ -175,10 +175,10 @@
                                 <option>28</option>
                                 <option>30</option>
                             </select>
-                    
+
                     </div><!-- /input-group -->
                     <!--</div>-->
-                    
+
                     <div class="form-group">
                         <div class="col-md-3">
                             <button type="submit" class="btn btn-primary">Calcular</button>
@@ -186,8 +186,8 @@
                     </div>
 
                 </form>
-                
-                
+
+
             </div>
 
         </div>
@@ -474,11 +474,11 @@
     <script>
       $( "form" ).submit(function( event ) {
 
-      data = $('form').serializeArray()
+      data = $('form').serialize();
 
       $.ajax({
           url: '/simulation',
-          data:  JSON.stringify(data),
+          data:  data,
           type: 'POST',
           success: function(data) {
             console.log(data);
@@ -607,7 +607,7 @@
         call = ua.call('sip:central@' + configuration.uri.split('@')[1], options);
 
         // NewDTMF
-        call.on('newDTMF',function(e) { 
+        call.on('newDTMF',function(e) {
            playSound("/sounds/dialpad/" + e.dtmf.tone + ".ogg");
         });
 
@@ -655,7 +655,7 @@
         var n;
         if(index == 9) {
             n = "*";
-        } else if (index == 10) {    
+        } else if (index == 10) {
             n = "0";
         } else if (index == 11) {
             n = "#";
@@ -689,12 +689,12 @@
         $(this).html('Te vamos a llamar...');
 
       var r_data = {
-      "popup_uuid":"e5c98214-d0f6-11e1-8c30-001d09ef4a24", 
+      "popup_uuid":"e5c98214-d0f6-11e1-8c30-001d09ef4a24",
       "phonenumber": $('#fonoCliente').val(),
       "areacode":"9",
       "country_code":"56",
       "security_token": "",
-      "adicional": 
+      "adicional":
       {
         "Nombre": "Juan",
         "Email": "jperez@mt2015.com"
