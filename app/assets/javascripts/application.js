@@ -14,6 +14,24 @@
 //= require jquery/dist/jquery
 //= require tether/dist/js/tether
 //= require bootstrap/dist/js/bootstrap
+
+// here all theme related requirements
+//= require minton/modernizr.min
+//= require minton/detect
+//= require minton/fastclick
+//= require minton/jquery.slimscroll
+//= require minton/jquery.blockUI
+//= require minton/waves
+//= require minton/wow.min
+//= require minton/jquery.nicescroll
+//= require minton/jquery.scrollTo.min
+//= require minton/switchery.min
+//= require minton/jquery.waypoints
+//= require minton/jquery.counterup.min
+//= require minton/raphael-min
+//= require minton/jquery.core
+//= require minton/jquery.app
+
 //= require turbolinks
 //= require_tree .
 //= require jssip.js
