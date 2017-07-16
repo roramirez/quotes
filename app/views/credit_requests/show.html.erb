@@ -1,109 +1,243 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Call:</strong>
-  <%= @credit_request.call_id %>
-</p>
-
-<p>
-  <strong>Data:</strong>
-  <%= @credit_request.data %>
-</p>
-
-<button class="btn btn-primary btn-sm" id="btn-call">Hablar Aqui</button>
-
-<%= link_to 'Edit', edit_credit_request_path(@credit_request) %> |
-<%= link_to 'Back', credit_requests_path %>
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Información de solicitud</h4>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
 
 
-        <div id="remote_stream" class="col-md-8 hide">
-          <video id="remote" class="" autoplay hidden=true poster="" src="/320x240.ogg">
-            Tu navegador no implementa el elemento <code>video</code>.
-          </video>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">CLIENTE</h4>
+            <table class="table">
+                <thead class="thead-default">
+                <tr>
+                    <th>Nombre</th>
+                    <th><%= [@credit_request.data['nombreCliente'], @credit_request.data['apellidoCliente']].join(' ').titleize %></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <th scope="row">RUT</th>
+                    <td><%= [@credit_request.data['rutCliente'], @credit_request.data['dvCliente']].join('-')%></td>
+                </tr>
+                <tr>
+                    <th scope="row">Edad</th>
+                    <td>33</td>
+                </tr>
+                <tr>
+                    <th scope="row">Profesión</th>
+                    <td>Ingeniero comercial</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ciudad</th>
+                    <td>Santiago</td>
+                </tr>
+                <tr>
+                    <th scope="row">Comuna</th>
+                    <td><%= @credit_request.data['comuna']%></td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">INFORMACIÓN ADICIONAL</h4>
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <th scope="row">Sueldo promedio líquido</th>
+                    <td>$<%= @credit_request.data['renta'] %></td>
+                </tr>
+                <tr>
+                    <th scope="row">Valor propiedades</th>
+                    <td><%= @credit_request.data['valorPropiedadUf'] %>UF</td>
+                </tr>
+                <tr>
+                    <th scope="row">Boletín comercial</th>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th scope="row">Deuda bancaria</th>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th scope="row">Rating crediticio</th>
+                    <td>-</td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+
         </div>
 
-           <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
-              <div class="col-xs-12 col-md-12">
-                <div class="panel panel-default">
-                  <div class="panel-heading top-bar">
-                    <div class="col-md-8 col-xs-8">
-                      <h3 class="panel-title">Web2Call</h3>
-                    </div>
-                    <div class="col-md-4 col-xs-4" style="text-align: right;">
-                      <a href="#"><span id="minim_chat_window" class="glyphicon icon_minim btn-xs panel-collapsed glyphicon-plus"></span></a>
-                    </div>
+    </div>
+</div>
+<!--- end row -->
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title">SIMULACIÓN</h4>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Fecha</th>
+                    <td>viernes 14 de Julio de 2017</td>
+                </tr>
+                <tr>
+                    <th scope="row">Crédito solicitado</th>
+                    <td>UF 4000</td>
+                </tr>
+                <tr>
+                    <th scope="row">Monto pie</th>
+                    <td>UF 2000</td>
+                </tr>
+                <tr>
+                    <th scope="row">Plazo</th>
+                    <td>20 años</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tasa anual en UF</th>
+                    <td>3,29%</td>
+                </tr>
+                <tr>
+                    <th scope="row">CAE</th>
+                    <td>3,79%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+      <button class="btn btn-primary btn-sm" id="btn-call">Hablar Aqui</button>
+
+      <%= link_to 'Edit', edit_credit_request_path(@credit_request) %> |
+      <%= link_to 'Back', credit_requests_path %>
+
+
+      <div id="remote_stream" class="col-md-8 hide">
+        <video id="remote" class="" autoplay hidden=true poster="" src="/320x240.ogg">
+          Tu navegador no implementa el elemento <code>video</code>.
+        </video>
+      </div>
+
+         <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+            <div class="col-xs-12 col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-heading top-bar">
+                  <div class="col-md-8 col-xs-8">
+                    <h3 class="panel-title">Web2Call</h3>
                   </div>
-                <div style="display: none;" class="panel-body msg_container_base">
+                  <div class="col-md-4 col-xs-4" style="text-align: right;">
+                    <a href="#"><span id="minim_chat_window" class="glyphicon icon_minim btn-xs panel-collapsed glyphicon-plus"></span></a>
+                  </div>
+                </div>
+              <div style="display: none;" class="panel-body msg_container_base">
 
-                  <div class="panel-footer">
-                    <div class="input-group">
+                <div class="panel-footer">
+                  <div class="input-group">
 
-                          <div id="main-wrapper" class="phone_wrapper" style="display:none">
-                            <section role="main">
-                              <div class="dialPad compact">
-                                <div class="number"></div>
-                                  <div class="dials">
-                                    <ol>
-                                      <li class="digits">
-                                        <p><strong>1</strong></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>2</strong><sup>abc</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>3</strong><sup>def</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>4</strong><sup>ghi</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>5</strong><sup>jkl</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>6</strong><sup>mno</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>7</strong><sup>pqrs</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>8</strong><sup>tuv</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>9</strong><sup>wxyz</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>*</strong></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>0</strong><sup>+</sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong>#</strong></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong><i class=""></i></strong> <sup></sup></p>
-                                      </li>
-                                      <li class="digits">
-                                        <p><strong><i class=""></i></strong> <sup></sup></p>
-                                      </li>
-                                      <li class="digits pad-action">
-                                        <p><strong><i class="icon-phone icon-large"></i></strong> <sup>Hangup</sup></p>
-                                      </li>
-                                    </ol>
-                                  </div>
+                        <div id="main-wrapper" class="phone_wrapper" style="display:none">
+                          <section role="main">
+                            <div class="dialPad compact">
+                              <div class="number"></div>
+                                <div class="dials">
+                                  <ol>
+                                    <li class="digits">
+                                      <p><strong>1</strong></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>2</strong><sup>abc</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>3</strong><sup>def</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>4</strong><sup>ghi</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>5</strong><sup>jkl</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>6</strong><sup>mno</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>7</strong><sup>pqrs</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>8</strong><sup>tuv</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>9</strong><sup>wxyz</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>*</strong></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>0</strong><sup>+</sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong>#</strong></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong><i class=""></i></strong> <sup></sup></p>
+                                    </li>
+                                    <li class="digits">
+                                      <p><strong><i class=""></i></strong> <sup></sup></p>
+                                    </li>
+                                    <li class="digits pad-action">
+                                      <p><strong><i class="icon-phone icon-large"></i></strong> <sup>Hangup</sup></p>
+                                    </li>
+                                  </ol>
                                 </div>
-                              </section>
-                            </div>
-                            <span class="input-group-btn">
+                              </div>
+                            </section>
+                          </div>
+                          <span class="input-group-btn">
 
-                      </span>
-                    </div>
-                 </div>
-              </div>
-            </div>
+                    </span>
+                  </div>
+               </div>
             </div>
           </div>
+          </div>
         </div>
+      </div>
+    </div>
+
+
+
 
 
 
