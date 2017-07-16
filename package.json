@@ -1,5 +1,11 @@
 {
   "name": "quote",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "add": "^2.0.6",
+    "bootstrap": "4.0.0-alpha.6",
+    "jquery": "^3.2.1",
+    "tether": "^1.4.0",
+    "yarn": "^0.27.5"
+  }
 }
