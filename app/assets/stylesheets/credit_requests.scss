@@ -1,3 +1,19 @@
 // Place all the styles related to the CreditRequests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_register_modal-title{
+  padding: 15px 25px 15px 25px;
+  line-height: 22px;
+  font-size: 18px;
+  background-color: #039cfd;
+  color: #ffffff;
+  text-align: left;
+  margin: 0;
+}
+
+.new_register_modal-text{
+  padding: 20px;
+  font-weight: bold;
+  text-align: center;
+}
