@@ -10,8 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome/css/font-awesome
  *= require tether/dist/css/tether
  *= require bootstrap/dist/css/bootstrap
+ *= require minton/switchery.min
+ *= require minton/style
  *= require_tree .
  *= require_self
  */
