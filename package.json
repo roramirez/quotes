@@ -4,6 +4,7 @@
   "dependencies": {
     "add": "^2.0.6",
     "bootstrap": "4.0.0-alpha.6",
+    "custombox": "^4.0.3",
     "font-awesome": "^4.7.0",
     "ionicons": "^3.0.0",
     "jquery": "v1.11.1",

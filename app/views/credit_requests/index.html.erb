@@ -42,3 +42,26 @@
 <br>
 
 <%= link_to 'New Credit Request', new_credit_request_path %>
+
+<script type="text/javascript">
+  $(function(){
+    poolingRequests();
+  });
+</script>
+
+<!-- Custom Modal -->
+<div id="new_register_modal" class="modal-demo">
+  <button type="button" class="close" onclick="Custombox.modal.close();">
+      <span>&times;</span><span class="sr-only">Close</span>
+  </button>
+  <h4 class="new_register_modal-title">Atención</h4>
+  <div class="new_register_modal-text">
+    <h3>Tienes una simulación entrante</h3>
+    <h3>¿Deseas tomarla?</h3>
+    <br>
+    <button type="button" class="btn btn-secondary" onclick="Custombox.modal.close();">
+        Rechazar
+    </button>
+    <%= link_to 'Aceptar', CreditRequest.last, class: 'btn btn-success', id: "link_to_request" %>
+  </div>
+</div>

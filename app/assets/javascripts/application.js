@@ -28,6 +28,7 @@
 //= require minton/switchery.min
 //= require minton/jquery.waypoints
 //= require minton/jquery.counterup.min
+//= require custombox/dist/custombox.min
 //= require minton/raphael-min
 //= require minton/jquery.core
 //= require minton/jquery.app
