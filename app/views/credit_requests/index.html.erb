@@ -1,29 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="page-title-box">
+      <h4 class="page-title">Solicitudes</h4>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
 
-<h1>Credit Requests</h1>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card-box">
+      <table class="table table-responsive table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Llamada</th>
+            <th>Nombre del cliente</th>
+            <th>Fono cliente</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Call</th>
-      <th>Data</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @credit_requests.each do |credit_request| %>
-      <tr>
-        <td><%= credit_request.call_id %></td>
-        <td><%= credit_request.data %></td>
-        <td><%= link_to 'Show', credit_request %></td>
-        <td><%= link_to 'Edit', edit_credit_request_path(credit_request) %></td>
-        <td><%= link_to 'Destroy', credit_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+        <tbody>
+          <% @credit_requests.each do |credit_request| %>
+            <tr>
+              <td><%= credit_request.id %></td>
+              <td><%= credit_request.call_id %></td>
+              <td><%= credit_request.data[:name] %></td>
+              <td><%= link_to 'Show', credit_request %></td>
+              <td><%= link_to 'Edit', edit_credit_request_path(credit_request) %></td>
+              <td><%= link_to 'Destroy', credit_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 <br>
 
 <%= link_to 'New Credit Request', new_credit_request_path %>
