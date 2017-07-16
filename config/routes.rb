@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get '/last', to: 'credit_requests#last'
 
 
-  root 'credit_requests#index'
+  root 'credit_requests#dashboard'
 end

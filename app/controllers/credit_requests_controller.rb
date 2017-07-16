@@ -69,6 +69,10 @@ class CreditRequestsController < ApplicationController
     end
   end
 
+
+  def dashboard
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_credit_request
