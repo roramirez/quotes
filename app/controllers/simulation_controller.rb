@@ -57,7 +57,6 @@ class SimulationController < ApplicationController
     }
 
 
-
     params.each do |p|
       if parameters.key?(p)
         val = params[p]
@@ -71,12 +70,12 @@ class SimulationController < ApplicationController
     simulation_result = response.read_body
 
     c_request = CreditRequest.new
-    c_request.data = params
+    c_request.data = parameters
     c_request.simulation_response = simulation_result
     c_request.save!
 
     respond_to do |format|
-       format.json  { render :json => simulation_result} 
+       format.json  { render :json => simulation_result}
     end
   end
 
