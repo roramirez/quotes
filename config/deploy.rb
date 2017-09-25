@@ -9,7 +9,7 @@ set :db_remote_clean, true
 set :disallow_pushing, true
 
 set :application, "quotes"
-set :repo_url, "https://github.com/afromankenobi/quotes.git"
+set :repo_url, "https://github.com/roramirez/quotes.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
