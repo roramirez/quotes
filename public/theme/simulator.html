@@ -88,7 +88,13 @@
                   <label class="col-2 col-form-label" for="example-email">Nombre</label>
                   <div class="col-10">
                     <input type="input" id="example-email" name="nombreCliente" class="form-control" placeholder="Nombre">
-                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-2 col-form-label" for="example-email">RUT</label>
+                  <div class="col-10">
+                    <input type="input" id="rutCliente" name="rutCliente" class="form-control" placeholder="RUT">
                   </div>
                 </div>
 
@@ -96,11 +102,45 @@
                   <label class="col-2 col-form-label" for="example-email">Celular</label>
                   <div class="col-10">
                     <input type="input" id="fonoCliente" name="fonoCliente" class="form-control" placeholder="Celular">
-                    </div>
                   </div>
-                </div>
+                </div> 
 
                 <div class="form-group">
+                  <div class="col-4">
+                    <label class="col-form-label" for="example-email">Renta Mensual</label>
+                      <select class="form-control" name="renta">
+                        <option>$600.000 - $1.300.000</option>
+                        <option>$1.300.001 - $2.500.000</option>
+                        <option>$2.500.001 - $3.000.000</option>
+                        <option>$3.000.001 o mas</option>
+                      </select>
+                  </div>
+                  <div class="col-4">
+                    <label class="col-form-label" for="example-email">Quiero</label>
+                    <select class="form-control" name="renta">
+                      <option>Comprar</option>
+                      <option>Refinanciar</option>
+                    </select>
+                  </div>
+
+                  <div class="col-4">
+                    <label class="col-form-label" for="example-email">Propiedad</label>
+                    <select class="form-control" name="renta">
+                      <option>Nueva</option>
+                      <option>Usada</option>
+                    </select>
+                  </div>
+
+                   <div class="col-4">
+                    <label class="col-form-label" for="example-email">Tipo Propiedad</label>
+                    <select class="form-control" name="renta">
+                      <option>Casa</option>
+                      <option>Departamento</option>
+                    </select>
+                    </div>
+                  </div>
+                <div class="form-group">
+                  <div class="col-10">
                   <p><strong>¿Qué tipo de tasa quieres?</strong></p> 
                   <div class="radio radio-info">
                     <input name="tasa" id="radio5" value="fija" type="radio">
@@ -115,11 +155,12 @@
                         <strong>tasa fija + variable</strong> (UF)
                       </label>
                     </div>
-                  </div>
+                  </div> 
+                </div> 
 
-                    <p><strong>¿Cuál es el valor de la propiedad?</strong></p>
-                    <!--<div class="form-group">-->
-                    <div class="input-group">
+                  <p><strong>¿Cuál es el valor de la propiedad?</strong></p>
+                  <div class="input-group">
+
                         <div class="input-group-btn">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UF <span class="caret"></span></button>
                             <ul class="dropdown-menu">
@@ -180,6 +221,11 @@
                     </div><!-- /input-group -->
                     <!--</div>-->
 
+
+                    <!--</div>-->
+
+
+
                     <div class="form-group">
                         <div class="col-md-3">
                             <button type="submit" class="btn btn-primary">Calcular</button>
@@ -189,6 +235,8 @@
                 </form>
 
 
+            </div>
+            </div>
             </div>
 
               <div class="col-md-4" id="simulacion">
@@ -216,8 +264,6 @@
             </div>
           </div>
         </div>
-
-
 
                                     </div>
                                 </div>
