@@ -11,10 +11,10 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="card-box">
+        <div class="card-box" style="background:#f3f3f3">
             <h4 class="m-t-0 header-title">CLIENTE</h4>
             <table class="table">
-                <thead class="thead-default">
+                <thead>
                 <tr>
                     <th>Nombre</th>
                     <th><%= @credit_request.data['nombreCliente'].titleize %></th>
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <th scope="row">Profesión</th>
-                    <td>Ingeniero comercial</td>
+                    <td>Ingeniero comercial, U. Adolfo Ibáñez</td>
                 </tr>
                 <tr>
                     <th scope="row">Ciudad</th>
@@ -51,7 +51,7 @@
 
     <div class="col-lg-6">
 
-        <div class="card-box">
+        <div class="card-box" style="background:aliceblue">
             <h4 class="m-t-0 header-title">INFORMACIÓN ADICIONAL</h4>
 
 
@@ -69,8 +69,8 @@
                     <td><%= @credit_request.data['renta'] %></td>
                 </tr>
                 <tr>
-                    <th scope="row">Valor propiedades</th>
-                    <td>UF <%= @credit_request.data['valorPropiedadUf'] %></td>
+                    <th scope="row">Avaluo Fiscal Patrimonio</th>
+                    <td>UF 13.000</td>
                 </tr>
                 <tr>
                     <th scope="row">Boletín comercial</th>
@@ -99,7 +99,7 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="card-box">
+        <div class="card-box" style="background:#c5edbe">
             <h4 class="m-t-0 header-title">SIMULACIÓN</h4>
 
             <table class="table">
@@ -140,7 +140,7 @@
     </div>
 
     <div class="col-lg-6">
-        <div class="card-box">
+        <div class="card-box" style="background:#f9fbc5">
             <h4 class="m-t-0 header-title">OFERTAS</h4>
             <table class="table">
                 <thead>
