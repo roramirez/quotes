@@ -66,11 +66,11 @@
                 <tbody>
                 <tr>
                     <th scope="row">Sueldo promedio líquido</th>
-                    <td>$<%= @credit_request.data['renta'] %></td>
+                    <td><%= @credit_request.data['renta'] %></td>
                 </tr>
                 <tr>
                     <th scope="row">Valor propiedades</th>
-                    <td><%= @credit_request.data['valorPropiedadUf'] %>UF</td>
+                    <td>UF <%= @credit_request.data['valorPropiedadUf'] %></td>
                 </tr>
                 <tr>
                     <th scope="row">Boletín comercial</th>
@@ -112,19 +112,19 @@
                 <tbody>
                 <tr>
                     <th scope="row">Fecha</th>
-                    <td>Domingo 16 de Julio de 2017</td>
+                    <td><%= @credit_request.created_at %></td>
                 </tr>
                 <tr>
                     <th scope="row">Crédito solicitado</th>
-                    <td>UF 4000</td>
+                    <td>UF <%= @credit_request.data["montoCreditoUf"] %></td>
                 </tr>
                 <tr>
                     <th scope="row">Monto pie</th>
-                    <td>UF 400</td>
+                    <td>UF <%= @credit_request.data["pie"] %></td>
                 </tr>
                 <tr>
                     <th scope="row">Plazo</th>
-                    <td>20 años</td>
+                    <td><%= @credit_request.data["plazo"] %> años</td>
                 </tr>
                 <tr>
                     <th scope="row">Tasa anual en UF</th>

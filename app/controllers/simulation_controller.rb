@@ -39,13 +39,14 @@ class SimulationController < ApplicationController
       "fechaNacimientoTitular" =>  "",
       "fechaNacimientoCodeudor" =>  "",
       "plazo" =>  5,
+      "pie" =>  0,
       "renta" =>  1200000,
       "valorPropiedadUf" =>  10000,
       "montoCreditoUf" =>  7037,
       "codTipoBienRaiz" =>  "casa",
       "comuna" =>  "Santiago Centro",
       "nombreCliente" =>  "Juan",
-      "apellidoCliente" =>  "Soto",
+      "apellidoCliente" =>  "",
       "emailCliente" =>  "jsoto@mailinator.com",
       "fonoCliente" =>  93849284,
       "ciudad" =>  320,
@@ -62,6 +63,12 @@ class SimulationController < ApplicationController
         val = params[p]
         parameters[p] = val
       end
+    end
+
+    rut_split = parameters["rutCliente"].split("-")
+    if rut_split.length > 1
+      parameters["rutCliente"] = rut_split[0]
+      parameters["dvCliente"] = rut_split[1]
     end
 
     request.body = JSON[parameters]

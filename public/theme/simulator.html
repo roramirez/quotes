@@ -109,15 +109,15 @@
                   <div class="col-4">
                     <label class="col-form-label" for="example-email">Renta Mensual</label>
                       <select class="form-control" name="renta">
-                        <option>$600.000 - $1.300.000</option>
-                        <option>$1.300.001 - $2.500.000</option>
-                        <option>$2.500.001 - $3.000.000</option>
-                        <option>$3.000.001 o mas</option>
+                        <option value="950.000">$600.000 - $1.300.000</option>
+                        <option value="1.900.000">$1.300.001 - $2.500.000</option>
+                        <option value="2.750.000">$2.500.001 - $3.000.000</option>
+                        <option value="3.000.000">$3.000.001 o mas</option>
                       </select>
                   </div>
                   <div class="col-4">
                     <label class="col-form-label" for="example-email">Quiero</label>
-                    <select class="form-control" name="renta">
+                    <select class="form-control" name="quiero">
                       <option>Comprar</option>
                       <option>Refinanciar</option>
                     </select>
@@ -125,7 +125,7 @@
 
                   <div class="col-4">
                     <label class="col-form-label" for="example-email">Propiedad</label>
-                    <select class="form-control" name="renta">
+                    <select class="form-control" name="tipo_propiedad">
                       <option>Nueva</option>
                       <option>Usada</option>
                     </select>
@@ -133,9 +133,9 @@
 
                    <div class="col-4">
                     <label class="col-form-label" for="example-email">Tipo Propiedad</label>
-                    <select class="form-control" name="renta">
-                      <option>Casa</option>
-                      <option>Departamento</option>
+                    <select class="form-control" name="codTipoBienRaiz">
+                      <option value="casa">Casa</option>
+                      <option value="departamento">Departamento</option>
                     </select>
                     </div>
                   </div>
@@ -182,7 +182,7 @@
                               <li><a href="#">$</a></li>
                             </ul>
                         </div><!-- /btn-group -->
-                          <input type="text" class="form-control"id="pie" name="valorPropiedadUf" placeholder="0">
+                          <input type="text" class="form-control" id="pie" name="pie" placeholder="0">
                     </div><!-- /input-group -->
                     <!--</div>-->
 
@@ -204,7 +204,7 @@
                     <!--<div class="form-group">-->
                      <div class="input-group">
 
-                            <select class="form-control" name="anosTasaFija">
+                            <select class="form-control" name="plazo">
                                 <option>10</option>
                                 <option>12</option>
                                 <option>14</option>
